@@ -1,4 +1,4 @@
-package movementModel;
+package examplesTutorial;
 
 import burlap.behavior.policy.GreedyQPolicy;
 import burlap.behavior.policy.Policy;

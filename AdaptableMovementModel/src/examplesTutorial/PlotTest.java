@@ -1,4 +1,4 @@
-package movementModel;
+package examplesTutorial;
 
 import burlap.behavior.singleagent.auxiliary.performance.LearningAlgorithmExperimenter;
 import burlap.behavior.singleagent.auxiliary.performance.PerformanceMetric;

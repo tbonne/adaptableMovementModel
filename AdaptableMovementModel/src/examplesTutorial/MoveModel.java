@@ -1,4 +1,4 @@
-package movementModel;
+package examplesTutorial;
 
 import java.awt.Color;
 import java.util.List;
@@ -91,11 +91,11 @@ public class MoveModel {
 		String outputPath = "output/"; //directory to record results
 
 		//run example
-		example.BFSExample(outputPath);
+		//example.BFSExample(outputPath);
 		//example.DFSExample(outputPath);
 		//example.AStarExample(outputPath);
 		//example.valueIterationExample(outputPath);
-		//example.QLearningExample(outputPath);
+		example.QLearningExample(outputPath);
 		//example.sarsaLearningExample(outputPath);
 		
 		
@@ -119,6 +119,11 @@ public class MoveModel {
 		rf = new UniformCostRF();
 		tf = new SinglePFTF(domain.getPropFunction(GridWorldDomain.PFATLOCATION));
 		goalCondition = new TFGoalCondition(tf);
+		
+		rf = new DirectionalReward();//new UniformCostRF();
+		tf = new SinglePFTF(domain.getPropFunction(GridWorldDomain.PFATLOCATION));
+		goalCondition = new TFGoalCondition(tf);
+		
 
 		//initalize the state of the task
 		initialState = GridWorldDomain.getOneAgentNLocationState(domain, 1);
@@ -220,6 +225,23 @@ public class MoveModel {
 	}
 
 	public void QLearningExample(String outputPath){
+
+		LearningAgent agent = new QLearning(domain, 0.99, hashingFactory, 0., 1.);
+
+		//run learning for 50 episodes
+		for(int i = 0; i < 50; i++){
+			EpisodeAnalysis ea = agent.runLearningEpisode(env);
+
+			ea.writeToFile(outputPath + "ql_" + i);
+			System.out.println(i + ": " + ea.maxTimeStep());
+
+			//reset environment for next learning episode
+			env.resetEnvironment();
+		}
+
+	}
+	
+	public void QLearningExampleMutableEnv(String outputPath){
 
 		LearningAgent agent = new QLearning(domain, 0.99, hashingFactory, 0., 1.);
 

@@ -1,4 +1,4 @@
-package movementModel;
+package examplesTutorial;
 
 import burlap.domain.singleagent.gridworld.GridWorldDomain;
 import burlap.domain.singleagent.gridworld.GridWorldVisualizer;

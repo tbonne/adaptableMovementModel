@@ -1,4 +1,4 @@
-package movementModel;
+package examplesTutorial;
 
 import burlap.behavior.singleagent.learning.tdmethods.QLearning;
 import burlap.behavior.stochasticgames.GameAnalysis;
